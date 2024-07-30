@@ -1,0 +1,10 @@
+<!-- templates/404.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="error-404">
+    <h1>404 - Página no encontrada</h1>
+    <p>Lo sentimos, pero la página que buscas no existe.</p>
+    <a href="{% url 'home' %}">Volver al inicio</a>
+</div>
+{% endblock %}

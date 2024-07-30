@@ -1,0 +1,159 @@
+{% extends "base.html" %} 
+{% block title %}Camaras{% endblock %} 
+{% load static %} 
+{% block content %}
+<main class="main-cameras">
+  <header class="header">
+    <a href="/cameras" class="navbar-brand">
+      <img
+        class="icon"
+        src="{% static 'images/logoSena.png' %}"
+        alt="Servicio Nacional de Aprendizaje"
+      />
+      <h3>VMS CDTI</h3>
+    </a>
+
+    <div class="label-rol">
+      <h3>ADMIN</h3>
+    </div>
+
+    <button class="btnToggle">
+      <img
+        class="icon"
+        src="{% static 'images/icons/menu-3-line.svg' %}"
+        alt="Toggle mini-menu"
+      />
+    </button>
+    <div class="group-btn">
+      <button type="button" id="btnAddCam">
+        <img
+          class="icon"
+          src="{% static 'images/icons/video-add-line.svg' %}"
+          alt="Crear Camara"
+        />
+      </button>
+      <button type="button" id="btnRemoveCam">
+        <img
+          class="icon"
+          src="{% static 'images/icons/video-off-line.svg' %}"
+          alt="Eliminar Camara"
+        />
+      </button>
+      <a href="{% url 'exit' %}">
+        <img
+          class="icon"
+          src="{% static 'images/icons/logout-circle-line.svg' %}"
+          alt="Cerrar sesión"
+        />
+      </a>
+    </div>
+  </header>
+  <aside class="sidebar">
+    <header class="headerSidebar">
+      <div class="title">
+        <img
+          class="icon"
+          src="{% static 'images/icons/layout-masonry-line.svg' %}"
+          alt="Sectores CDTI"
+        />
+        <h3>SECTORES</h3>
+      </div>
+      <span class="hr"></span>
+    </header>
+
+    <section class="sectores">
+      <ul class="menu" id="menuSidebar">
+        <li class="item-dp">
+          <header class="header-dp">
+            <h3>BLOQUE A</h3>
+            <img
+              class="icon"
+              src="{% static 'images/icons/arrow-down-s-line.svg' %}"
+              alt="VMS CDTI"
+            />
+          </header>
+          <div class="dropdown">
+            <a href="#">AMBIENTE A201</a>
+            <a href="#">AMBIENTE A202</a>
+            <a href="#">AMBIENTE A203</a>
+            <a href="#">AMBIENTE A204</a>
+            <a href="#">AMBIENTE A205</a>
+            <a href="#">AMBIENTE A206</a>
+            <a href="#">AMBIENTE A207</a>
+            <a href="#">AMBIENTE A208</a>
+            <a href="#">AMBIENTE A209</a>
+            <a href="#">AMBIENTE A210</a>
+            <a href="#">AMBIENTE A211</a>
+          </div>
+        </li>
+        <li class="item-dp">
+          <header class="header-dp">
+            <h3>BLOQUE C</h3>
+            <img
+              class="icon"
+              src="{% static 'images/icons/arrow-down-s-line.svg' %}"
+              alt="VMS CDTI"
+            />
+          </header>
+          <div class="dropdown">
+            <a href="#">AMBIENTE B201</a>
+            <a href="#">AMBIENTE B202</a>
+            <a href="#">AMBIENTE B203</a>
+            <a href="#">AMBIENTE B204</a>
+            <a href="#">AMBIENTE B205</a>
+            <a href="#">AMBIENTE B206</a>
+            <a href="#">AMBIENTE B207</a>
+            <a href="#">AMBIENTE B208</a>
+            <a href="#">AMBIENTE B209</a>
+            <a href="#">AMBIENTE B210</a>
+            <a href="#">AMBIENTE B211</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <button class="arrowToggle">
+      <img
+        class="icon"
+        src="{% static 'images/icons/arrow-right-wide-line.svg' %}"
+        alt="Sectores CDTI"
+      />
+    </button>
+  </aside>
+  <section class="cameras">
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+  </section>
+</main>
+
+<section class="modal-section"></section>
+
+<script src="{% static 'js/aside-menu.js' %}"></script>
+<script src="{% static 'js/dropdowns.js' %}"></script>
+<script src="{% static 'js/mini-menu.js' %}"></script>
+<script src="{% static 'js/modal.js' %}"></script>
+
+{% endblock %}
