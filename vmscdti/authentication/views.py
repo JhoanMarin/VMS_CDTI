@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
+from django.contrib.auth import logout,authenticate
+from django.contrib import messages
 
 # Create your views here.
 def login(request):

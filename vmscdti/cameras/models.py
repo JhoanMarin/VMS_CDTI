@@ -45,7 +45,8 @@ class CamarasDB(models.Model):
     nombre_usuario=models.CharField(max_length=80, verbose_name="NombreUsuario", null=False, blank=False)
     passwords = models.CharField(max_length=20, verbose_name="password", null=False, blank=False)
     ip_camara = models.GenericIPAddressField(verbose_name="IP Camara", null=False, blank=False)
-    puerto=models.CharField(max_length=15, verbose_name="puerto", null=False, blank=False) 
+    puerto=models.CharField(max_length=15, verbose_name="puerto", null=False, blank=False)
+    ambiente_fk = models.ForeignKey(AmbientesDB, on_delete=models.CASCADE, related_name='camaras',null=True, blank=True) 
 
     class Meta:
         db_table = "camaras"

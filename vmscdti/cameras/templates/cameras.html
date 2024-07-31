@@ -25,13 +25,13 @@
       />
     </button>
     <div class="group-btn">
-      <button type="button" id="btnAddCam">
+      <a href="{% url 'set_session_modal_add' %}" id="btnAddCam">
         <img
           class="icon"
           src="{% static 'images/icons/video-add-line.svg' %}"
           alt="Crear Camara"
         />
-      </button>
+      </a>
       <button type="button" id="btnRemoveCam">
         <img
           class="icon"
@@ -149,7 +149,9 @@
   </section>
 </main>
 
-<section class="modal-section"></section>
+{% if modal_add %}
+    {% include 'modal-add.html' %}
+{% endif %}
 
 <script src="{% static 'js/aside-menu.js' %}"></script>
 <script src="{% static 'js/dropdowns.js' %}"></script>
