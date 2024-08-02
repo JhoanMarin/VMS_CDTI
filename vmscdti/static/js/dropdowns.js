@@ -1,14 +1,22 @@
-//Dropdowns
-const bloquesItem = document.querySelectorAll("#menuSidebar .item-dp");
+$(document).ready(function() {
+  // Selecciona los elementos usando jQuery
+  const $bloquesItem = $("#menuSidebar .item-dp");
 
-bloquesItem.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    // Primero, eliminamos el color de fondo de todos los elementos
-    bloquesItem.forEach((i) => {
-      i.classList.remove("open-dp");
-    });
+  // Añade el evento click utilizando jQuery
+  $bloquesItem.on("click", function() {
+      const $item = $(this);
 
-    // Luego, aplicamos el color de fondo solo al elemento clicado
-    item.classList.add("open-dp");
+      // Si el elemento clicado ya tiene la clase "open-dp"
+      if ($item.hasClass("open-dp")) {
+          // Eliminamos la clase "open-dp" de todos los elementos
+          $bloquesItem.removeClass("open-dp");
+      } else {
+          // Primero, eliminamos la clase "open-dp" de todos los elementos
+          $bloquesItem.removeClass("open-dp");
+
+          // Luego, aplicamos la clase "open-dp" solo al elemento clicado
+          $item.addClass("open-dp");
+      }
   });
 });
+

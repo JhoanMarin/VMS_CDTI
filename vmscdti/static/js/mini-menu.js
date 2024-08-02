@@ -1,7 +1,9 @@
 // MiniMenu
-const toogleBtn = document.querySelector(".btnToggle");
-const miniMenu = document.querySelector(".group-btn");
+$(document).ready(function () {
+  const $toogleBtn = $(".btnToggle");
+  const $miniMenu = $(".group-btn");
 
-toogleBtn.addEventListener("click", (e) => {
-  miniMenu.classList.toggle("showMiniMenu");
+  $toogleBtn.on("click", function() {
+    $miniMenu.toggleClass("showMiniMenu");
+  })
 });

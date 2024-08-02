@@ -1,25 +1,29 @@
 {% load static %}
-<section class="modal-section modal-on">
   <form action="/cameras/new/" method="POST" class="form-modal">
     {% csrf_token %}
     <header class="header-modal">
-      <div class="title-header">
+
+      <div class="adjust-box">
         <img
           class="icon"
           src="{% static 'images/icons/video-add-line.svg' %}"
           alt="Agregar camara"
         />
-
-        <h4>Agregar cámara</h4>
       </div>
 
-      <a href="{% url 'remove_modal' %}" class="close-modal">
-        <img
-          class="icon"
-          src="{% static 'images/icons/close-circle-line.svg' %}"
-          alt="Cerrar modal"
-        />
-      </a>
+      <div class="adjust-box">
+        <h4 class="title-header">Agregar cámara</h4>
+      </div>
+
+      <div class="adjust-box">
+        <button type="button" id="btnCloseModal" class="close-modal">
+          <img
+            class="icon"
+            src="{% static 'images/icons/close-circle-line.svg' %}"
+            alt="Cerrar modal"
+          />
+        </button>
+      </div>
     </header>
     <section class="content-modal">
       <div class="row">
@@ -58,4 +62,3 @@
       </div>
     </section>
   </form>
-</section>

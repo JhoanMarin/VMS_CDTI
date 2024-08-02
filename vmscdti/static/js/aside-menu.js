@@ -1,12 +1,13 @@
-//AsideMenu
-const aside = document.querySelector(".sidebar");
-const arrowToggle = document.querySelector(".arrowToggle");
-const titleSidebar = document.querySelector(
-  ".main-cameras .sidebar header .title h3"
-);
+$(document).ready(function() {
+  // Selecciona los elementos usando jQuery
+  const $aside = $(".sidebar");
+  const $arrowToggle = $(".arrowToggle");
+  const $titleSidebar = $(".main-cameras .sidebar header .title h3");
 
-arrowToggle.addEventListener("click", (e) => {
-  aside.classList.toggle("showSideBar");
-  arrowToggle.classList.toggle("rotateArrow");
-  titleSidebar.classList.toggle("d-block");
+  // Añade el evento click utilizando jQuery
+  $arrowToggle.on("click", function() {
+      $aside.toggleClass("showSideBar");
+      $arrowToggle.toggleClass("rotateArrow");
+      $titleSidebar.toggleClass("d-block");
+  });
 });

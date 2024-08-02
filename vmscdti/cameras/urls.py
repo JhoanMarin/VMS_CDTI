@@ -2,9 +2,9 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    
     path('', views.index, name='index'),
-    path('set_session_modal_add/', views.set_session_modal_add, name='set_session_modal_add'),
-    path('remove_modal/', views.remove_modal, name='remove_modal'),
-    path('new/',views.create_cameras, name='new')    
+    path('new/',views.create_cameras, name='new'),
+    path('modal_new/', views.modal_new, name='modal_new'),
+    path('modal_remove/', views.modal_remove, name='modal_remove'),
+    path('<int:cam>/', views.camera_detail, name='camera_detail'),
 ]

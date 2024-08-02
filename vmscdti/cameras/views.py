@@ -7,27 +7,25 @@ from .models import CamarasDB
 
 @login_required
 def index(request):
-    if 'mostrar_modal_add' in request.session:
-        modal_add = request.session['mostrar_modal_add']
-        return render(request, 'cameras.html', {'modal_add': modal_add})
-    else:     
-        return render(request, 'cameras.html')
+    return render(request, 'cameras.html')
 
 def create_cameras(request):
-    camaras=CamarasDB(nombre_usuario=request.POST['usuario'], passwords=request.POST['contraseña'],
-    mara=request.POST['ip'],puerto=request.POST['puerto'],ambiente_fk=request.POST['sector'])
-    camaras.save()
+    #camaras = CamarasDB(nombre_usuario=request.POST['usuario'], #passwords=request.POST['contraseña']
+    #CAmara=request.POST['ip'],puerto=request.POST['puerto'],#ambiente_fk=request.POST['sector'])
+    #camaras.save()
     return redirect ('/cameras/')
 
-def set_session_modal_add(request):
-    request.session['mostrar_modal_add'] = True
-    return redirect ('/cameras/')
+@login_required
+def modal_new(request):
+    return render(request, 'modal-add.html')
 
-def remove_modal(request):
-    if 'mostrar_modal_add' in request.session:
-        del request.session['mostrar_modal_add']
-        
-    return redirect ('/cameras/')
+@login_required
+def modal_remove(request):
+    return render(request, 'modal-remove.html')
+
+@login_required
+def camera_detail(request, cam):
+    return render(request, 'camera_detail.html', {'camera': cam})
 
 
 

@@ -1,51 +1,56 @@
-{% extends "base.html" %} 
-{% block title %}Camaras{% endblock %} 
-{% load static %} 
+{% extends "base.html" %}
+{% block title %}Camaras{% endblock %}
+{% load static %}
 {% block content %}
 <main class="main-cameras">
   <header class="header">
-    <a href="/cameras" class="navbar-brand">
-      <img
-        class="icon"
-        src="{% static 'images/logoSena.png' %}"
-        alt="Servicio Nacional de Aprendizaje"
-      />
-      <h3>VMS CDTI</h3>
-    </a>
-
-    <div class="label-rol">
-      <h3>ADMIN</h3>
+    <div class="adjust-box">
+      <a href="/cameras" class="navbar-brand">
+        <img
+          class="icon"
+          src="{% static 'images/logoSena.png' %}"
+          alt="Servicio Nacional de Aprendizaje"
+        />
+        <h3>VMS CDTI</h3>
+      </a>
     </div>
 
-    <button class="btnToggle">
-      <img
-        class="icon"
-        src="{% static 'images/icons/menu-3-line.svg' %}"
-        alt="Toggle mini-menu"
-      />
-    </button>
-    <div class="group-btn">
-      <a href="{% url 'set_session_modal_add' %}" id="btnAddCam">
+    <div class="adjust-box">
+      <h3 class="label-rol">ADMIN</h3>
+    </div>
+
+    <div class="adjust-box">
+      <button class="btnToggle">
         <img
           class="icon"
-          src="{% static 'images/icons/video-add-line.svg' %}"
-          alt="Crear Camara"
-        />
-      </a>
-      <button type="button" id="btnRemoveCam">
-        <img
-          class="icon"
-          src="{% static 'images/icons/video-off-line.svg' %}"
-          alt="Eliminar Camara"
+          src="{% static 'images/icons/menu-3-line.svg' %}"
+          alt="Toggle mini-menu"
         />
       </button>
-      <a href="{% url 'exit' %}">
-        <img
-          class="icon"
-          src="{% static 'images/icons/logout-circle-line.svg' %}"
-          alt="Cerrar sesión"
-        />
-      </a>
+  
+      <div class="group-btn">
+        <button id="btnAddCam">
+          <img
+            class="icon"
+            src="{% static 'images/icons/video-add-line.svg' %}"
+            alt="Crear Camara"
+          />
+        </button>
+        <button id="btnRemoveCam">
+          <img
+            class="icon"
+            src="{% static 'images/icons/video-off-line.svg' %}"
+            alt="Eliminar Camara"
+          />
+        </button>
+        <a href="{% url 'exit' %}">
+          <img
+            class="icon"
+            src="{% static 'images/icons/logout-circle-line.svg' %}"
+            alt="Cerrar sesión"
+          />
+        </a>
+      </div>
     </div>
   </header>
   <aside class="sidebar">
@@ -120,39 +125,12 @@
       />
     </button>
   </aside>
-  <section class="cameras">
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-    <div class="cam"></div>
-  </section>
+  <section class="cameras" id="cameras"></section>
 </main>
 
-{% if modal_add %}
-    {% include 'modal-add.html' %}
-{% endif %}
+<section id="modal-section" class="modal-section"></section>
 
+<script src="{% static 'js/cameras.js' %}"></script>
 <script src="{% static 'js/aside-menu.js' %}"></script>
 <script src="{% static 'js/dropdowns.js' %}"></script>
 <script src="{% static 'js/mini-menu.js' %}"></script>

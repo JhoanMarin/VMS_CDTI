@@ -118,7 +118,22 @@ ol {
   width: 24px;
 }
 
-/* login.hbs =============================================================================*/
+.adjust-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adjust-box:first-child {
+  justify-content: start;
+}
+
+.adjust-box:last-child {
+  justify-content: end;
+}
+
+/* login =============================================================================*/
 .main-login {
   width: 100%;
   height: 100svh;
@@ -350,7 +365,7 @@ ol {
   color: var(--text-primary);
 }
 
-.main-cameras .header .label-rol h3 {
+.main-cameras .header .label-rol {
   font-size: var(--fs-s-h5);
   font-weight: var(--fw-bold);
   color: var(--text-primary);
@@ -472,6 +487,7 @@ ol {
   flex-direction: column;
   padding: 10px;
   padding-right: 0px;
+  gap: 10px;
 }
 
 .main-cameras .sidebar .sectores .menu .item-dp {
@@ -609,13 +625,16 @@ ol {
 }
 
 .cam {
+  position: relative;
   width: calc(
     33.333% - 2px
   ); /* Ajusta esto según el número de cámaras que desees mostrar en una fila */
-  background-color: #ccc;
-  border: 1px solid #999;
-  margin: 1px;
-  position: relative;
+  background-image: url("/static/images/example.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: var(--border-size) var(--border-color);
+  cursor: pointer;
 }
 
 .cam::before {
@@ -624,21 +643,36 @@ ol {
   padding-top: 56.25%; /* 9/16 = 0.5625 */
 }
 
-.cam > * {
+.cam > footer {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-alpha-modal);
+  color: var(--text-primary);
+  padding: 5px;
 }
 
-@media screen and (max-width: 768px) {
+.cam > footer img {
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.cam:hover > footer img {
+  opacity: 1;
+}
+
+@media screen and (max-width: 1200px) {
   .cam {
     width: calc(50% - 2px);
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 676px) {
   .cam {
     width: calc(100% - 2px);
   }
@@ -673,11 +707,16 @@ ol {
 .form-modal {
   max-width: 600px;
   min-width: 350px;
-  max-height: 550px;
   height: auto;
   background-color: var(--bg);
   border: var(--border-color) var(--border-size);
   border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .form-modal {
+    min-width: calc(100% - 20px);
+  }
 }
 
 .header-modal {
@@ -693,10 +732,10 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
   color: var(--text-primary);
   font-weight: var(--fw-medium);
   font-size: var(--fs-s-h4);
+  text-wrap: nowrap;
 }
 
 .close-modal {
@@ -706,6 +745,8 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg);
+  cursor: pointer;
 }
 
 .content-modal {
@@ -726,6 +767,12 @@ ol {
   margin-top: 10px;
 }
 
+@media screen and (max-width: 500px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
 .btn-submit {
   width: 100%;
   padding: 10px;
@@ -736,4 +783,61 @@ ol {
   font-weight: var(--fw-semibold);
   margin-top: 10px;
   cursor: pointer;
+}
+
+/* main-camera-detail==================================================================*/
+.main-camera-detail {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: var(--navbar-height) 1fr var(--navbar-height);
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}
+
+.main-camera-detail .header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-bottom: var(--border-size) var(--border-color);
+  padding: 10px;
+  grid-area: header;
+}
+
+.main-camera-detail .header .title {
+  font-size: var(--fs-s-h5);
+  color: var(--text-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.main-camera-detail .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-camera-detail .footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border-top: var(--border-size) var(--border-color);
+  padding: 10px;
+  grid-area: footer;
+}
+
+.btnBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: var(--border-size) var(--border-color);
+  border-radius: 5px;
 }
