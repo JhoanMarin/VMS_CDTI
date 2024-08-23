@@ -68,51 +68,15 @@
 
     <section class="sectores">
       <ul class="menu" id="menuSidebar">
-        <li class="item-dp">
-          <header class="header-dp">
+        <li class="item">
+          <header class="item-header">
             <h3>BLOQUE A</h3>
-            <img
-              class="icon"
-              src="{% static 'images/icons/arrow-down-s-line.svg' %}"
-              alt="VMS CDTI"
-            />
           </header>
-          <div class="dropdown">
-            <a href="#">AMBIENTE A201</a>
-            <a href="#">AMBIENTE A202</a>
-            <a href="#">AMBIENTE A203</a>
-            <a href="#">AMBIENTE A204</a>
-            <a href="#">AMBIENTE A205</a>
-            <a href="#">AMBIENTE A206</a>
-            <a href="#">AMBIENTE A207</a>
-            <a href="#">AMBIENTE A208</a>
-            <a href="#">AMBIENTE A209</a>
-            <a href="#">AMBIENTE A210</a>
-            <a href="#">AMBIENTE A211</a>
-          </div>
         </li>
-        <li class="item-dp">
-          <header class="header-dp">
+        <li class="item">
+          <header class="item-header">
             <h3>BLOQUE C</h3>
-            <img
-              class="icon"
-              src="{% static 'images/icons/arrow-down-s-line.svg' %}"
-              alt="VMS CDTI"
-            />
           </header>
-          <div class="dropdown">
-            <a href="#">AMBIENTE B201</a>
-            <a href="#">AMBIENTE B202</a>
-            <a href="#">AMBIENTE B203</a>
-            <a href="#">AMBIENTE B204</a>
-            <a href="#">AMBIENTE B205</a>
-            <a href="#">AMBIENTE B206</a>
-            <a href="#">AMBIENTE B207</a>
-            <a href="#">AMBIENTE B208</a>
-            <a href="#">AMBIENTE B209</a>
-            <a href="#">AMBIENTE B210</a>
-            <a href="#">AMBIENTE B211</a>
-          </div>
         </li>
       </ul>
     </section>
@@ -125,14 +89,27 @@
       />
     </button>
   </aside>
-  <section class="cameras" id="cameras"></section>
+  <section class="cameras" id="cameras">
+    <img src="http://10.211.145.89:4747/video" alt="xd" class="cam">
+    <img src="http://10.211.144.143:4747/video" alt="xd" class="cam">
+    <img src="http://10.211.144.36:4747/video" alt="xd" class="cam">
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+    <div class="cam"></div>
+  </section>
 </main>
 
 <section id="modal-section" class="modal-section"></section>
 
 <script src="{% static 'js/cameras.js' %}"></script>
 <script src="{% static 'js/aside-menu.js' %}"></script>
-<script src="{% static 'js/dropdowns.js' %}"></script>
 <script src="{% static 'js/mini-menu.js' %}"></script>
 <script src="{% static 'js/modal.js' %}"></script>
 

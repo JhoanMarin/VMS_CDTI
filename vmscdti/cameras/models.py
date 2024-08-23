@@ -12,32 +12,24 @@ class RolesDB(models.Model):
     
     def __str__(self):
         return self.nombre
+    
 
 
 
-class BloquesDB(models.Model):
-    nombre = models.CharField(max_length=5, verbose_name="NombreBloque", null=False, blank=False)
-    class Meta:
-        db_table = "bloques"
-        verbose_name ="bloque"
-        verbose_name_plural ="bloques"
-
-
-    def __str__(self):
-        return self.nombre
-
-
-class AmbientesDB(models.Model):
-    nombre = models.CharField(max_length=70, verbose_name="NombreAmbiente", null=False, blank=False)
-    bloque_fk = models.ForeignKey(BloquesDB, on_delete=models.CASCADE)
+class SectorDB(models.Model):
+    nombre = models.CharField(max_length=30, verbose_name="NombreSector",null=False, blank=False)
+    
 
     class Meta:
-        db_table = "ambientes"
-        verbose_name ="ambiente"
-        verbose_name_plural ="ambientes"
-
+        db_table = "sectores"
+        verbose_name ="sector"
+        verbose_name_plural ="sectores"
+    
     def __str__(self):
         return self.nombre
+    
+
+
 
 
 
@@ -46,7 +38,10 @@ class CamarasDB(models.Model):
     passwords = models.CharField(max_length=20, verbose_name="password", null=False, blank=False)
     ip_camara = models.GenericIPAddressField(verbose_name="IP Camara", null=False, blank=False)
     puerto=models.CharField(max_length=15, verbose_name="puerto", null=False, blank=False)
-    ambiente_fk = models.ForeignKey(AmbientesDB, on_delete=models.CASCADE, related_name='camaras',null=True, blank=True) 
+    lugar=models.CharField(max_length=80, verbose_name="lugar", null=False, blank=False)
+    sector_fk = models.ForeignKey(SectorDB, on_delete=models.CASCADE)
+
+    
 
     class Meta:
         db_table = "camaras"

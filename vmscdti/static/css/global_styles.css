@@ -8,8 +8,7 @@
 
 :root {
   --navbar-height: 60px;
-  --aside-width: 35px;
-  --aside-width-exp: 245px;
+  --aside-width: 245px;
 
   --bg: #001d2c;
   --bg-alpha-modal: rgba(0, 0, 0, 0.5);
@@ -326,19 +325,19 @@ ol {
   }
 }
 
-/* cameras.hbs =============================================================================*/
+/* cameras =============================================================================*/
 .main-cameras {
-  display: grid;
-  grid-template-columns: var(--aside-width) 1fr;
-  grid-template-rows: var(--navbar-height) 1fr;
-  grid-template-areas:
-    "header header"
-    "aside section";
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100svh;
   min-height: 500px;
 }
 
 .main-cameras .header {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -416,26 +415,28 @@ ol {
   border-radius: 5px;
 }
 
-.showSideBar {
-  width: var(--aside-width-exp) !important;
-}
-
-.showSideBar .sectores {
-  display: block !important;
-}
-
 .main-cameras .sidebar {
+  position: absolute;
+  left: calc(-1 * var(--aside-width));
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: start;
   flex-direction: column;
-  position: relative;
   width: var(--aside-width);
-  height: 100%;
+  height: calc(100% - var(--navbar-height));
   border-right: var(--border-size) var(--border-color);
   background: var(--bg);
-  overflow: hidden;
   z-index: 50;
+  transition: var(--transition);
+}
+
+.showSideBar {
+  left: 0 !important;
+}
+
+.rotateArrow {
+  transform: rotate(180deg) !important;
 }
 
 .main-cameras .sidebar .headerSidebar {
@@ -463,7 +464,6 @@ ol {
   font-size: var(--fs-s-h6);
   font-weight: var(--fw-medium);
   color: var(--text-primary);
-  display: none;
 }
 
 .main-cameras .sidebar .hr {
@@ -473,7 +473,6 @@ ol {
 }
 
 .main-cameras .sidebar .sectores {
-  display: none;
   width: 100%;
   height: 100%;
   min-height: 400px;
@@ -490,7 +489,7 @@ ol {
   gap: 10px;
 }
 
-.main-cameras .sidebar .sectores .menu .item-dp {
+.main-cameras .sidebar .sectores .menu .item {
   width: 100%;
   padding: 10px;
   border: var(--border-size) var(--border-color);
@@ -498,76 +497,35 @@ ol {
   cursor: pointer;
 }
 
-.main-cameras .sidebar .sectores .menu .item-dp i {
-  color: var(--text-primary);
-}
-
-.rotateArrow {
-  transform: rotate(180deg) !important;
-}
-
-.main-cameras .sidebar .arrowToggle {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  cursor: pointer;
-}
-
-.main-cameras .sidebar .sectores .menu .item-dp .header-dp {
+.main-cameras .sidebar .sectores .menu .item .item-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0px;
   border-bottom: none;
 }
-
-.main-cameras .sidebar .sectores .menu .item-dp .header-dp h3 {
+.main-cameras .sidebar .sectores .menu .item .item-header h3 {
   font-size: var(--fs-s-h5);
-  font-weight: var(--fw-semibold);
-  color: var(--text-primary);
 }
 
-.main-cameras .sidebar .sectores .menu .item-dp header img {
-  transform: rotate(-180deg);
-}
-
-.main-cameras .sidebar .sectores .menu .item-dp .dropdown {
-  display: none;
-  width: 100%;
-  align-items: start;
+.main-cameras .sidebar .arrowToggle {
+  width: 25px;
+  height: 45px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
-}
-
-.main-cameras .sidebar .sectores .menu .item-dp .dropdown a {
-  width: 100%;
-  padding: 10px;
-  font-size: var(--fs-s-h6);
-  font-weight: var(--fw-medium);
-  color: var(--text-primary);
+  word-break: break-all;
+  position: absolute;
+  left: var(--aside-width);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-primary);
   cursor: pointer;
-  transition: var(--transition);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.main-cameras .sidebar .sectores .menu .item-dp .dropdown a:hover {
-  background-color: var(--border-color);
-  border-radius: 5px;
-}
-
-.open-dp .dropdown {
-  display: flex !important;
-}
-
-.open-dp header {
-  border-bottom: var(--border-size) var(--border-color) !important;
-  padding-bottom: 10px !important;
-  margin-bottom: 10px;
-}
-
-.open-dp header img {
-  transform: rotate(0deg) !important;
+.main-cameras .sidebar .arrowToggle .icon {
+  width: 18px;
 }
 
 @media screen and (min-width: 768px) {
@@ -582,28 +540,6 @@ ol {
 
   .btnToggle {
     display: none;
-  }
-}
-
-@media screen and (min-width: 991px) {
-  .main-cameras {
-    grid-template-columns: var(--aside-width-exp) 1fr;
-  }
-
-  .main-cameras .sidebar .arrowToggle {
-    display: none;
-  }
-
-  .main-cameras .sidebar {
-    width: var(--aside-width-exp);
-  }
-
-  .main-cameras .sidebar .headerSidebar .title h3 {
-    display: block;
-  }
-
-  .main-cameras .sidebar .sectores {
-    display: block;
   }
 }
 
@@ -629,7 +565,7 @@ ol {
   width: calc(
     33.333% - 2px
   ); /* Ajusta esto según el número de cámaras que desees mostrar en una fila */
-  background-image: url("/static/images/example.png");
+  /*background-image: url("/static/images/example.png");*/
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

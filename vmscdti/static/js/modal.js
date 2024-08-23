@@ -31,6 +31,6 @@ $(document).ready(function () {
 
   // Delegación de eventos para cerrar modales
   $(document).on("click", "#btnCloseModal", function () {
-    $("#modal-section").removeClass("modal-on").html(""); // Ejemplo de cómo podrías cerrar el modal y limpiar el contenido
+    $("#modal-section").removeClass("modal-on").html("");
   });
 });
